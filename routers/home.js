@@ -16,6 +16,11 @@ homeRouter.get('/', homeController.gethome);
 //http://127.0.0.1:8081/blog/detail?id=xxxxx
 homeRouter.get('/detail', homeController.getdetail);
 
+//联系我们
+homeRouter.get('/contact', homeController.getcontact);
+
+//关于我们
+homeRouter.get('/about', homeController.getabout);
 
 //获取某个文章的所有评论
 //http://127.0.0.1:8081/getcomments/xxxx

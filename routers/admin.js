@@ -9,6 +9,21 @@ const adminController = require('../controllers/admin');
 //后台首页
 adminRouter.get('/', adminController.gethome);
 
+//后台列表页
+adminRouter.get('/tables', adminController.gettables);
+
+//后台列表页
+adminRouter.get('/grid', adminController.getgrid);
+
+//后台列表页
+adminRouter.get('/forms', adminController.getforms);
+
+//后台列表页
+adminRouter.get('/elements', adminController.getelements);
+
+//后台列表页
+adminRouter.get('/blankpage', adminController.getblankpage);
+
 //获取所有用户信息
 adminRouter.get('/users', adminController.getusers);
 

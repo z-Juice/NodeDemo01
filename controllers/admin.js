@@ -12,6 +12,31 @@ adminController.gethome = (req, res) => {
     res.render('../views/admin/index.html', {});
 }
 
+//后台列表页
+adminController.gettables = (req, res) => {
+    res.render('../views/admin/tables.html', {});
+}
+
+//后台列表页
+adminController.getgrid = (req, res) => {
+    res.render('../views/admin/grid.html', {});
+}
+
+//后台列表页
+adminController.getforms = (req, res) => {
+    res.render('../views/admin/forms.html', {});
+}
+
+//后台列表页
+adminController.getblankpage = (req, res) => {
+    res.render('../views/admin/elements.html', {});
+}
+
+//后台列表页
+adminController.getelements = (req, res) => {
+    res.render('../views/admin/blankpage.html', {});
+}
+
 //查询所有用户
 adminController.getusers = (req, res) => {
     

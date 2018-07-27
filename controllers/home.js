@@ -66,6 +66,16 @@ homeController.getdetail = (req, res) => {
     })
 }
 
+//联系我们
+homeController.getcontact = (req, res) => {
+    res.render('../views/blog/contact.html', {});
+}
+
+//关于我们
+homeController.getabout = (req, res) => {
+    res.render('../views/blog/about.html', {});
+}
+
 //根据id返回评论数据
 homeController.getcommentsbyid = (req, res) => {
     //获取文章id
