@@ -9,32 +9,32 @@ let url = "mongodb://localhost:27017/itcast";
 
 //后台页面
 adminController.gethome = (req, res) => {
-    res.render('../views/admin/index.html', {});
+    res.render('../views/admin/index.html', {'current': 'home'});
 }
 
 //后台列表页
 adminController.gettables = (req, res) => {
-    res.render('../views/admin/tables.html', {});
+    res.render('../views/admin/tables.html', {'current': 'tables'});
 }
 
 //后台列表页
 adminController.getgrid = (req, res) => {
-    res.render('../views/admin/grid.html', {});
+    res.render('../views/admin/grid.html', {'current': 'grid'});
 }
 
 //后台列表页
 adminController.getforms = (req, res) => {
-    res.render('../views/admin/forms.html', {});
+    res.render('../views/admin/forms.html', {'current': 'forms'});
 }
 
 //后台列表页
 adminController.getblankpage = (req, res) => {
-    res.render('../views/admin/elements.html', {});
+    res.render('../views/admin/elements.html', {'current': 'blankpage'});
 }
 
 //后台列表页
 adminController.getelements = (req, res) => {
-    res.render('../views/admin/blankpage.html', {});
+    res.render('../views/admin/blankpage.html', {'current': 'elements'});
 }
 
 //查询所有用户
