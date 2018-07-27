@@ -1,15 +1,8 @@
 'use strice';
 
 const express = require('express');
-const bodyParser = require('body-parser');
 
 let app = express();
-
-// 创建 application/x-www-form-urlencoded 编码解析
-let urlencodedParser = bodyParser.urlencoded({ extended:false });
-//app.use(bodyParser.urlencoded({ extended:false }));
-//parse application/json
-app.use(bodyParser.json());
 
 let homeRouter = module.exports = express.Router();
 
@@ -29,4 +22,4 @@ homeRouter.get('/detail', homeController.getdetail);
 homeRouter.get('/getcomments/:id', homeController.getcommentsbyid);
 
 //发表评论
-homeRouter.post('/addblog', urlencodedParser, homeController.addblog);
+homeRouter.post('/addblog', homeController.addblog);
