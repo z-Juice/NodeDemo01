@@ -24,6 +24,7 @@ adminRouter.get('/elements', adminController.getelements);
 //后台列表页
 adminRouter.get('/blankpage', adminController.getblankpage);
 
+
 //获取所有用户信息
 adminRouter.get('/users', adminController.getusers);
 
