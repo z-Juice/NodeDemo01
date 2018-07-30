@@ -82,19 +82,19 @@
   <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
-      <li {{#if( current == 'home' )}}class="active"{{/if}}><a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
-      <li {{#if( current == 'tables' )}}class="active"{{/if}}><a href="/admin/tables"><i class="fa fa-fw fa-table"></i> Tables</a></li>
-      <li {{#if( current == 'forms' )}}class="active"{{/if}}><a href="/admin/forms"><i class="fa fa-fw fa-edit"></i> Forms</a></li>
-      <li {{#if( current == 'elements' )}}class="active"{{/if}}><a href="/admin/elements"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a></li>
-      <li {{#if( current == 'grid' )}}class="active"{{/if}}><a href="/admin/grid"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a></li>
-      <li {{#if( current == 'dropdown' )}}class="active"{{/if}}>
+      <li {{#if ( current === 'home' )}}class="active"{{/if}}><a href="/admin/"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
+      <li {{#if( current === 'tables' )}}class="active"{{/if}}><a href="/admin/tables"><i class="fa fa-fw fa-table"></i> Tables</a></li>
+      <li {{#if( current === 'forms' )}}class="active"{{/if}}><a href="/admin/forms"><i class="fa fa-fw fa-edit"></i> Forms</a></li>
+      <li {{#if( current === 'elements' )}}class="active"{{/if}}><a href="/admin/elements"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a></li>
+      <li {{#if( current === 'grid' )}}class="active"{{/if}}><a href="/admin/grid"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a></li>
+      <li {{#if( current === 'dropdown' )}}class="active"{{/if}}>
         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
         <ul id="demo" class="collapse">
           <li><a href="#">Dropdown Item</a></li>
           <li><a href="#">Dropdown Item</a></li>
         </ul>
       </li>
-      <li {{#if( current == 'blankpage' )}}class="active"{{/if}}><a href="/admin/blankpage"><i class="fa fa-fw fa-file"></i> Blank Page</a></li>
+      <li {{#if( current === 'blankpage' )}}class="active"{{/if}}><a href="/admin/blankpage"><i class="fa fa-fw fa-file"></i> Blank Page</a></li>
     </ul>
   </div>
   <!-- /.navbar-collapse -->
