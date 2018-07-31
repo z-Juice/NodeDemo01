@@ -4,6 +4,7 @@ const express = require('express');
 const xtpl = require('xtpl');
 const bodyParser = require('body-parser');
 const multer = require('multer');
+const hostname = '127.0.0.1';
 
 let app = express();
 
@@ -35,7 +36,7 @@ const demoRouter = require('./routers/demo');
 app.use('/demo', demoRouter);
 
 //监听窗口
-const server = app.listen(8081, () => {
+const server = app.listen(8081, hostname, () => {
     var host = server.address().address;
     var port = server.address().port;
     console.log('Example app listening at http://%s:%s', host, port);
