@@ -4,7 +4,7 @@ const express = require('express');
 const xtpl = require('xtpl');
 const bodyParser = require('body-parser');
 const multer = require('multer');
-const hostname = '127.0.0.1';
+const hostname = '0.0.0.0';
 
 let app = express();
 
