@@ -115,13 +115,26 @@ adminController.edituser = (req, res) => {
         
         let db = client.db('itcast');
         let users = db.collection('users');
+        let pwd = req.body.password;
+        let user = new Object();
         
-        users.update({_id:ObjectID(req.body.id)}, {$set: {
-            username: req.body.username,
-            nickname: req.body.nickname,
-            password: req.body.password,
-            email: req.body.email
-        }}, (err, data) => {
+        if(pwd){
+            user = {
+                username: req.body.username,
+                nickname: req.body.nickname,
+                password: req.body.password,
+                email: req.body.email
+            };
+        }else{
+            //如果password为空，不修改密码
+            user = {
+                username: req.body.username,
+                nickname: req.body.nickname,
+                email: req.body.email
+            };
+        }
+        
+        users.update({_id:ObjectID(req.body.id)}, {$set: user}, (err, data) => {
             if(err){
                 res.json({code: 20010,msg: '修改失败'});
             }else{
