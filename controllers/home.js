@@ -8,6 +8,61 @@ let homeController = module.exports;
 //连接数据库
 let url = 'mongodb://localhost:27017/itcast';
 
+//每页显示多少条数据
+let pagesize = 5;
+
+//获取分页数据 /getpagedatas/:pageindex
+homeController.getpagedatas = (req, res) => {
+    //获取页码
+    let pageindex = req.params.pageindex;
+
+    MongoClient.connect(url, (err, client) => {
+        if (err) throw err;
+        
+        let db = client.db('itcast');
+        let posts = db.collection('posts');
+        
+        posts.find().skip((pageindex - 1) * pagesize).limit(pagesize).toArray((err, pagedata) => {
+            if (err) throw err;
+            
+            //获取总页数
+            posts.find().toArray((err, data) => {
+                //总数据条数
+                let count = data.length;
+                let pagecount = Math.ceil(count / pagesize);
+                
+                res.json({pagecount: pagecount, data: pagedata});
+            })
+            
+            client.close();
+        })
+        
+    })
+}
+
+//获取总页数
+homeController.getpagecount = (req, res) => {
+  
+    MongoClient.connect(url, (err, client) => {
+        if (err) throw err;
+        
+        let db = client.db('itcast');
+        let posts = db.collection('posts');
+        
+        posts.find().toArray((err, data) => {
+            if (err) throw err;
+            
+            //总数据条数
+            let count = data.length;
+            let pagecount = Math.ceil(count / pagesize);
+            res.json({pagecount: pagecount});
+            
+            client.close();
+        })
+        
+    })
+}
+
 //首页
 homeController.gethome = (req, res) => {
     //连接数据库
@@ -18,7 +73,7 @@ homeController.gethome = (req, res) => {
         //获取要操作的集合
         let posts = db.collection('posts');
         //查询所有的数据--查询所有的博客数据
-        posts.find().toArray((err, postsData) => {
+        posts.find().skip(0).limit(pagesize).toArray((err, postsData) => {
             if (err) throw err;
             
             //查询所有的用户信息
@@ -59,10 +114,11 @@ homeController.getdetail = (req, res) => {
         let posts = db.collection('posts');
         
         posts.findOne({_id: ObjectID(id)}, (err, data) => {
-            res.render('../views/blog/detail.html', {data: data})
+            res.render('../views/blog/detail.html', {data: data});
+            
+            client.close();
         })
         
-        client.close();
     })
 }
 
@@ -89,9 +145,10 @@ homeController.getcommentsbyid = (req, res) => {
         
         comments.find({post_id: ObjectID(id)}).toArray((err, data) => {
             res.json(data);
+            
+            client.close();
         })
         
-        client.close();
     })
 }
 
@@ -121,9 +178,10 @@ homeController.addblog = (req, res) => {
             }else{
                 res.json({code: 10000, msg:'评论成功'});
             }
+            
+            client.close();
         })
         
-        client.close();
     })
     
 }

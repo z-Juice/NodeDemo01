@@ -42,20 +42,22 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        {{#each(data)}}
-        <div class="post-preview">
-          <a href="/detail?id={{this._id}}">
-            <h2 class="post-title">{{this.title}}</h2>
-            <h3 class="post-subtitle">{{this.excerpt}}</h3>
-          </a>
-          <p class="post-meta">Posted by <a href="#">{{this.username}}</a> on {{this.created}}</p>
+        <div id="posts">
+            {{#each(data)}}
+            <div class="post-preview">
+              <a href="/detail?id={{this._id}}">
+                <h2 class="post-title">{{this.title}}</h2>
+                <h3 class="post-subtitle">{{this.excerpt}}</h3>
+              </a>
+              <p class="post-meta">Posted by <a href="#">{{this.username}}</a> on {{this.created}}</p>
+            </div>
+            <hr>
+            {{/each}}
         </div>
-        <hr>
-        {{/each}}
         <!-- Pager -->
         <ul class="pager">
-          <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Newer</a></li>
-          <li class="next"><a href="#">Older <span aria-hidden="true">&rarr;</span></a></li>
+          <li class="previous"><a href="javascript:;"><span aria-hidden="true">&larr;</span> Newer</a></li>
+          <li class="next"><a href="javascript:;">Older <span aria-hidden="true">&rarr;</span></a></li>
         </ul>
       </div>
     </div>
@@ -72,6 +74,25 @@
   <script src="/statics/js/contact_me.js"></script>
   <!-- Theme JavaScript -->
   <script src="/statics/js/clean-blog.js"></script>
+  <script src="/statics/vendor/template.js"></script>
+  
+  <script id="tpl" type="text/html">
+    <% for(var i = 0; i < data.length; i++) { %>
+      <div class="post-preview">
+        <a href="/detail?id=<%= data[i]._id %>">
+          <h2 class="post-title">
+            <%= data[i].title %>
+          </h2>
+          <h3 class="post-subtitle">
+            <%= data[i].excerpt %>
+          </h3>
+        </a>
+        <p class="post-meta">Posted by <a href="#"><%= data[i].username %></a> on <%= data[i].created %></p>
+      </div>
+    <% } %>
+  </script>
+  
+  <script src="/statics/js/home/index.js"></script>
 </body>
 
 </html>

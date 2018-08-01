@@ -2,8 +2,6 @@
 
 const express = require('express');
 
-let app = express();
-
 let homeRouter = module.exports = express.Router();
 
 //获取控制器模块
@@ -11,6 +9,12 @@ const homeController = require('../controllers/home');
 
 //首页
 homeRouter.get('/', homeController.gethome);
+
+//分页的接口 pageindex 页码
+homeRouter.get('/getpagedatas/:pageindex', homeController.getpagedatas);
+
+//获取总页数
+homeRouter.get('/getpagecount', homeController.getpagecount);
 
 //详情页面
 //http://127.0.0.1:8081/blog/detail?id=xxxxx
