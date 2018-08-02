@@ -9,7 +9,14 @@ let url = "mongodb://localhost:27017/itcast";
 
 //后台页面
 adminController.gethome = (req, res) => {
-    res.render('../views/admin/index.html', {'current': 'home'});
+    //判断是否登录
+    if(req.session.user) {
+        res.render('../views/admin/index.html', {'current': 'home'});
+    }else{
+        //res.redirect('/login');
+    
+        res.send('<script>alert("请先登录;");location.href="/admin/login"</script>')
+    }
 }
 
 //后台登录页
