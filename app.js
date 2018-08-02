@@ -5,7 +5,7 @@ const xtpl = require('xtpl');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const session = require('express-session');
-const hostname = '127.0.0.1';
+const hostname = '0.0.0.0';
 const port = 8081;
 
 let app = express();
@@ -19,7 +19,7 @@ app.engine('html', xtpl.renderFile);
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: true
 }))
 
 //处理静态文件
